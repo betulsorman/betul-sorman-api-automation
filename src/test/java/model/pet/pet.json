@@ -17,7 +17,7 @@
     ],
     "status": "#string"
   },
-  "successResponseBody": {
+  "responseBody": {
     "id": "#number",
     "category": {
       "id": "#number",

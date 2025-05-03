@@ -5,12 +5,18 @@ Feature: Get Pet By Id Test Suite
     Given url baseUrl
     * def model = read(modelPath + '/pet/pet.json')
     * def petId = karate.call(callersPath + '/pet/getPetCaller.feature@get_pet_caller').firstPetId
-    And path "pet" , petId
 
   @get_pet_by_id
   Scenario: Successful Get Pet By Id
-    * karate.log("petId: " , petId)
+    And path "pet" , petId
     When method GET
     Then status 200
-    And match each response[*].id == model.successResponseBody.id
-    * karate.log("petId: " , petId)
+    And match response.id == petId
+    * karate.log("Returned Pet ID: ", response.id)
+
+  @get_pet_by_id
+  Scenario: Get Pet By Invalid ID
+    * def invalidPetId = 99999999
+    Given path "pet", invalidPetId
+    When method GET
+    Then status 404

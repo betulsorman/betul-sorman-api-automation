@@ -6,7 +6,7 @@ Feature: Create Pet Test Suite
     And path "pet"
     * def model = read(modelPath + '/pet/pet.json')
     * def requestBody = model.requestBody
-    * def responseBody = model.successResponseBody
+    * def responseBody = model.responseBody
     * def utils = Java.type('helpers.Utils')
 
   @pet_create @smoke
@@ -22,9 +22,8 @@ Feature: Create Pet Test Suite
     And request requestBody
     When method POST
     Then status 200
-    * karate.log("REQUEST-BODY: " , requestBody)
+    And match response.id == requestBody.id
+    And match response.name == requestBody.name
     And match response == responseBody
     * def petId = response.id
-    * karate.log("petId: " , petId)
-
-
+    * karate.log("Pet created with ID: " ,petId)

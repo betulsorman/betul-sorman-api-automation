@@ -1,19 +1,26 @@
-@caller_get_user
-Feature: Get User Callers
+@caller_get_pet
+Feature: Get Pet Callers
 
   Background:
     Given url baseUrl
-    * def model = read(modelPath + '/user/user.json')
-    And path "/kloia-users-demos"
+    And path "/pet/findByStatus"
+    * def model = read(modelPath + '/pet/pet.json')
 
-  @get_user_caller
-  Scenario: Successful Get User Caller
-    When method GET
-    Then status 200
-    And match each response.data[*].id == model.successUserArrayResponse.id
-    And match each response.data[*].attributes == model.successUserArrayResponse.attributes
-    * def firstUserId = response.data[0]["id"]
-    * karate.log("firstUserId: " , firstUserId)
-
+  @get_pet_caller @smoke
+  Scenario Outline: Successful Get Pet Caller
+    * param status = <status>
+    * method GET
+    * status 200
+    * match header Content-Type == "application/json"
+    * match each response[*].id == '#present'
+    * match each response[*].status == <status>
+    * match each response[*].id == '#notnull'
+    * def firstPetId = response[0]["id"]
+    * karate.log("firstPetId: " , firstPetId)
+    Examples:
+      | status      |
+      | "available" |
+      | "pending"   |
+      | "sold"      |
 
 
