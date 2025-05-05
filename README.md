@@ -24,5 +24,4 @@ You can run tests with a runner class and tags:
 ```bash
 mvn clean test -Dtest=RunnerName "-Dkarate.options=--tags @tagName"
 
-
-![api-karate-screen-record_compressed](https://github.com/user-attachments/assets/5d0916b2-2d98-42df-b571-b72d836abc3b)
+![](screen-recordings/api-karate-screen-record_compressed.gif)
