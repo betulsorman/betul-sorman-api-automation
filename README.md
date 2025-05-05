@@ -16,8 +16,7 @@ This repository includes test automation for Strapi services using the [Karate](
 ## ▶️ Running Tests
 
 ### 1. From IntelliJ
-- Run by clicking the green **Run** button on any `feature` or `JUnit Runner` file.
-
+- Click the green Run button on any feature file to execute it.
 ### 2. From CLI
 You can run tests with a runner class and tags:
 
