@@ -1,4 +1,4 @@
-# Strapi Services Test Automation with Karate
+# Pet Services Test Automation with Karate
 
 
 # Tool Stack
